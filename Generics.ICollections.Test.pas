@@ -36,6 +36,10 @@ type
     [Test]
     procedure AddElements;
     [Test]
+    procedure AddRangeElements;
+    [Test]
+    procedure AppendElements;
+    [Test]
     procedure FindElements;
     [Test]
     procedure RemoveLastElement;
@@ -59,7 +63,6 @@ implementation
 
 uses
   Generics.ICollections,
-  Winapi.Windows,
   SysUtils;
 
 procedure TIListTest.AccessByIndex;
@@ -84,6 +87,32 @@ begin
   Assert.AreEqual<Integer>(1, list.Add('world'));
   Assert.AreEqual<Integer>(2, list.Count);
   Assert.AreEqual<String>(list[0], 'hello');
+end;
+
+procedure TIListTest.AddRangeElements;
+var
+  list: IList<String>;
+  newList: IList<String>;
+begin
+  list := TIntList<String>.Create;
+  list.Add('hello');
+  list.Add('world');
+  newList := TIntList<String>.Create;
+  newList.AddRange(list);
+  Assert.AreEqual<Integer>(list.Count, newList.Count);
+end;
+
+procedure TIListTest.AppendElements;
+var
+  list: IList<String>;
+  newList: IList<String>;
+begin
+  list := TIntList<String>.Create;
+  list.Add('hello');
+  list.Add('world');
+  newList := TIntList<String>.Create;
+  newList.Append(list);
+  Assert.AreEqual<Integer>(list.Count, newList.Count);
 end;
 
 procedure TIListTest.FindElements;

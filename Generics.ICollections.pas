@@ -44,6 +44,8 @@ type
     function GetItem(Index: Integer): T;
     procedure SetItem(Index: Integer; const Value: T);
     function Add(const Value: T): Integer;
+    procedure AddRange(const Value: IEnumerable<T>);
+    procedure Append(const Value: IList<T>);
     function Contains(const Value: T): Boolean;
     function First: T;
     function Last: T;
@@ -79,6 +81,8 @@ type
     property Items[Index: Integer]: T read GetItem write SetItem; default;
     function IndexOf(const Value: T): Integer;
     function Add(const Value: T): Integer;
+    procedure AddRange(const Value: IEnumerable<T>);
+    procedure Append(const Value: IList<T>);
     function Contains(const Value: T): Boolean;
     procedure Clear;
     function First: T;
@@ -107,10 +111,30 @@ uses
 
 function TIntList<T>.Add(const Value: T): Integer;
 begin
-  Resize(1);
+  Resize(FCount + 1);
   FITems[FCount] := Value;
   Result := FCount;
   Inc(FCount);
+end;
+
+procedure TIntList<T>.AddRange(const Value: IEnumerable<T>);
+var
+  Item: T;
+begin
+  for Item in Value do begin
+    Add(Item);
+  end;
+end;
+
+procedure TIntList<T>.Append(const Value: IList<T>);
+var
+  i: Integer;
+begin
+  Resize(FCount + Value.Count);
+  for i := 0 to Value.Count - 1 do begin
+    FITems[FCount] := Value[i];
+    Inc(FCount);
+  end;
 end;
 
 procedure TIntList<T>.Clear;
