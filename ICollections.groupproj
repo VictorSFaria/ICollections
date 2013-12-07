@@ -3,7 +3,7 @@
         <ProjectGuid>{951AAC58-BF5F-4513-ADF1-EAE3872FD554}</ProjectGuid>
     </PropertyGroup>
     <ItemGroup>
-        <Projects Include="ICollections.dproj">
+        <Projects Include="ICollectionsExample.dproj">
             <Dependencies/>
         </Projects>
     </ItemGroup>
@@ -14,23 +14,23 @@
             <Default.Personality/>
         </BorlandProject>
     </ProjectExtensions>
-    <Target Name="ICollections">
-        <MSBuild Projects="ICollections.dproj"/>
+    <Target Name="ICollectionsExample">
+        <MSBuild Projects="ICollectionsExample.dproj"/>
     </Target>
-    <Target Name="ICollections:Clean">
-        <MSBuild Projects="ICollections.dproj" Targets="Clean"/>
+    <Target Name="ICollectionsExample:Clean">
+        <MSBuild Projects="ICollectionsExample.dproj" Targets="Clean"/>
     </Target>
-    <Target Name="ICollections:Make">
-        <MSBuild Projects="ICollections.dproj" Targets="Make"/>
+    <Target Name="ICollectionsExample:Make">
+        <MSBuild Projects="ICollectionsExample.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="ICollections"/>
+        <CallTarget Targets="ICollectionsExample"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="ICollections:Clean"/>
+        <CallTarget Targets="ICollectionsExample:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="ICollections:Make"/>
+        <CallTarget Targets="ICollectionsExample:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

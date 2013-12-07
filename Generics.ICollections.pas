@@ -1,3 +1,25 @@
+{***************************************************************************}
+{                                                                           }
+{  ICollections - Copyright (C) 2013 - Víctor de Souza Faria                }
+{                                                                           }
+{  victor@victorfaria.com                                                   }
+{                                                                           }
+{***************************************************************************}
+{                                                                           }
+{  Licensed under the Apache License, Version 2.0 (the "License");          }
+{  you may not use this file except in compliance with the License.         }
+{  You may obtain a copy of the License at                                  }
+{                                                                           }
+{      http://www.apache.org/licenses/LICENSE-2.0                           }
+{                                                                           }
+{  Unless required by applicable law or agreed to in writing, software      }
+{  distributed under the License is distributed on an "AS IS" BASIS,        }
+{  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. }
+{  See the License for the specific language governing permissions and      }
+{  limitations under the License.                                           }
+{                                                                           }
+{***************************************************************************}
+
 unit Generics.ICollections;
 
 interface
@@ -85,15 +107,9 @@ uses
 
 function TIntList<T>.Add(const Value: T): Integer;
 begin
-  if FCapacity <= FCount then begin
-    if FCapacity = 0 then begin
-      Capacity := 1;
-    end
-    else begin
-      Capacity := FCapacity * 2;
-    end;
-  end;
+  Resize(1);
   FITems[FCount] := Value;
+  Result := FCount;
   Inc(FCount);
 end;
 
