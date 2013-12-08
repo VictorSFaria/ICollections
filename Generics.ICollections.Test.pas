@@ -55,6 +55,8 @@ type
     procedure IndexOf;
     [Test]
     procedure Iterator;
+    [Test]
+    procedure IsEmpty;
   end;
 
 implementation
@@ -139,6 +141,16 @@ begin
   Assert.AreEqual<Integer>(list.IndexOf('hello'), 0);
   Assert.AreEqual<Integer>(list.IndexOf('world'), 1);
   Assert.AreEqual<Integer>(list.IndexOf('!!!'), 2);
+end;
+
+procedure TIListTest.IsEmpty;
+var
+  list: IList<String>;
+begin
+  list := TIntList<String>.Create;
+  Assert.IsTrue(list.IsEmpty);
+  list.Add('hello');
+  Assert.IsFalse(list.IsEmpty);
 end;
 
 procedure TIListTest.Iterator;

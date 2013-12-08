@@ -49,6 +49,7 @@ type
     function Contains(const Value: T): Boolean;
     function First: T;
     function Last: T;
+    function IsEmpty: Boolean;
     function Remove(const Value: T): Integer;
     function IndexOf(const Value: T): Integer;
     procedure Clear;
@@ -59,6 +60,7 @@ type
     property Count: Integer read GetCount;
     property Items[Index: Integer]: T read GetItem write SetItem; default;
   end;
+
 
   TIntList<T> = class(TInterfacedObject, IList<T>)
   strict private
@@ -80,6 +82,7 @@ type
     property Count: Integer read GetCount;
     property Items[Index: Integer]: T read GetItem write SetItem; default;
     function IndexOf(const Value: T): Integer;
+    function IsEmpty: Boolean;
     function Add(const Value: T): Integer;
     procedure AddRange(const Value: IEnumerable<T>);
     procedure Append(const Value: IList<T>);
@@ -107,7 +110,6 @@ implementation
 
 uses
   System.RTLConsts;
-
 
 function TIntList<T>.Add(const Value: T): Integer;
 begin
@@ -214,6 +216,11 @@ begin
   else begin
     Result := -1;
   end;
+end;
+
+function TIntList<T>.IsEmpty: Boolean;
+begin
+  Result := FCount = 0;
 end;
 
 function TIntList<T>.Last: T;
