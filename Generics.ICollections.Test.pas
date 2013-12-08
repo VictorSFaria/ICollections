@@ -57,6 +57,8 @@ type
     procedure Iterator;
     [Test]
     procedure IsEmpty;
+    [Test]
+    procedure FindAll;
   end;
 
 implementation
@@ -115,6 +117,31 @@ begin
   newList := TIntList<String>.Create;
   newList.Append(list);
   Assert.AreEqual<Integer>(list.Count, newList.Count);
+end;
+
+procedure TIListTest.FindAll;
+var
+  list: IList<String>;
+  resultList: IList<String>;
+begin
+  list := TIntList<String>.Create;
+  list.Add('hello');
+  list.Add('world');
+  list.Add('!!!');
+
+  resultList :=  list.FindAll(
+                   function(value: String): Boolean
+                   begin
+                     Result := value = '!!!';
+                   end);
+  Assert.AreEqual(1, resultList.Count);
+
+  resultList :=  list.FindAll(
+                   function(value: String): Boolean
+                   begin
+                     Result := value = 'fail';
+                   end);
+  Assert.AreEqual(0, resultList.Count);
 end;
 
 procedure TIListTest.FindElements;

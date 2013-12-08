@@ -52,6 +52,7 @@ type
     function IsEmpty: Boolean;
     function Remove(const Value: T): Integer;
     function IndexOf(const Value: T): Integer;
+    function FindAll(const Expr: TFunc<T, Boolean>): IList<T>;
     procedure Clear;
     function GetCapacity: Integer;
     procedure SetCapacity(Value: Integer);
@@ -82,6 +83,7 @@ type
     property Count: Integer read GetCount;
     property Items[Index: Integer]: T read GetItem write SetItem; default;
     function IndexOf(const Value: T): Integer;
+    function FindAll(const Expr: TFunc<T, Boolean>): IList<T>;
     function IsEmpty: Boolean;
     function Add(const Value: T): Integer;
     procedure AddRange(const Value: IEnumerable<T>);
@@ -161,6 +163,18 @@ end;
 constructor TIntList<T>.Create(Capacity: Integer);
 begin
   Create(Capacity, TComparer<T>.Default);
+end;
+
+function TIntList<T>.FindAll(const Expr: TFunc<T, Boolean>): IList<T>;
+var
+  i: Integer;
+begin
+  Result := TIntList<T>.Create;
+  for i := 0 to FCount - 1 do begin
+    if Expr(FItems[i]) then begin
+      Result.Add(FItems[i]);
+    end;
+  end;
 end;
 
 function TIntList<T>.First: T;
