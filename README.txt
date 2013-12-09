@@ -2,12 +2,11 @@
 {                                                                           }
 {           ICollections                                                    }
 {                                                                           }
-{           Copyright (C) 2013 Víctor de Souza Faria                        }
+{           Copyright (C) 2013 Vï¿½ctor de Souza Faria                        }
 {                                                                           }
-{           vincent@finalbuilder.com                                        }
-{           http://www.finalbuilder.com                                     }
+{           victor@victorfaria.com                                        }
 {                                                                           }
-{ Contributors : Víctor de Souza Faria                                      }
+{ Contributors : Vï¿½ctor de Souza Faria                                      }
 {                                                                           }
 {***************************************************************************}
 
