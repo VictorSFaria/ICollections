@@ -1,13 +1,12 @@
-{***************************************************************************}
+ï»¿{***************************************************************************}
 {                                                                           }
 {           ICollections                                                    }
 {                                                                           }
-{           Copyright (C) 2013 Víctor de Souza Faria                        }
+{           Copyright (C) 2013 VÃ­ctor de Souza Faria                        }
 {                                                                           }
-{           vincent@finalbuilder.com                                        }
-{           http://www.finalbuilder.com                                     }
+{           victor@victorfaria.com                                          }
 {                                                                           }
-{ Contributors : Víctor de Souza Faria                                      }
+{ Contributors : VÃ­ctor de Souza Faria                                      }
 {                                                                           }
 {***************************************************************************}
 
@@ -19,6 +18,7 @@ The idea is to build interface collections from scratch to Delphi, focusing on p
 Planned Support:
 
 - IList
+- ILinkedList
 - IDictionary
 - IStack
 - IQueue
