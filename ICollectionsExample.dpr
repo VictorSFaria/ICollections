@@ -11,8 +11,11 @@ uses
   DUnitX.Loggers.Console,
   DUnitX.Windows.Console,
   DUnitX.MemoryLeakMonitor.FastMM4,
-  Generics.ICollections in 'Generics.ICollections.pas',
-  Generics.ICollections.Test in 'Generics.ICollections.Test.pas';
+  ICollections.List in 'ICollections.List.pas',
+  ICollections.List.Test in 'ICollections.List.Test.pas',
+  ICollections.Tree in 'ICollections.Tree.pas',
+  ICollections.Tree.Test in 'ICollections.Tree.Test.pas',
+  ICollections.Default in 'ICollections.Default.pas';
 
 var
   runner : ITestRunner;

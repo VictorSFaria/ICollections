@@ -20,25 +20,16 @@
 {                                                                           }
 {***************************************************************************}
 
-unit Generics.ICollections;
+unit ICollections.List;
 
 interface
 
 uses
   System.SysUtils,
-  System.Generics.Defaults;
+  System.Generics.Defaults,
+  ICollections.Default;
 
 type
-  IEnumerator<T> = interface
-    function GetCurrent: T;
-    property Current: T read GetCurrent;
-    function MoveNext: Boolean;
-  end;
-
-  IEnumerable<T> = interface
-    function GetEnumerator: IEnumerator<T>;
-  end;
-
   IList<T> = interface(IEnumerable<T>)
     ['{5A627266-1B07-4348-8E3B-547D8F8EDE6D}']
     function GetItem(Index: Integer): T;
@@ -61,6 +52,7 @@ type
     property Count: Integer read GetCount;
     property Items[Index: Integer]: T read GetItem write SetItem; default;
   end;
+
 
 
   TIntList<T> = class(TInterfacedObject, IList<T>)

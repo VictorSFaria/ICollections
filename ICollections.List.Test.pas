@@ -20,7 +20,7 @@
 {                                                                           }
 {***************************************************************************}
 
-unit Generics.ICollections.Test;
+unit ICollections.List.Test;
 
 interface
 
@@ -66,7 +66,7 @@ implementation
 { TIListTest }
 
 uses
-  Generics.ICollections,
+  ICollections.List,
   SysUtils;
 
 procedure TIListTest.AccessByIndex;
